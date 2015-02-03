@@ -1,0 +1,12 @@
+echo "Changing root password..."
+      openssl rand 16 -base64 | passwd --stdin root &>/dev/null
+      echo "Adjusting boot menu timeout..."
+      sed -i 's/set timeout[[:space:]]*=.*$/set timeout=5/' /boot/grub2/grub.cfg &> /dev/null
+      sed -i '/linux16/s/$/ console=tty1/' /boot/grub2/grub.cfg &> /dev/null
+      echo "Rebooting your system in 5 seconds..."
+echo "" 
+echo ""
+echo ""
+echo "" 
+echo ""
+shutdown -r now
